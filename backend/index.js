@@ -56,6 +56,7 @@ app.put('/api/campesino/:id', (req, res) => {
   res.json({ message: 'Perfil actualizado' });
 });
 
+
 // Fallback: servir index.html si no encuentra rutas
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/index.html'));
