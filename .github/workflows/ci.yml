@@ -1,3 +1,4 @@
+# .github/workflows/ci.yml
 name: CI - Agro Marketplace
 
 on:
@@ -10,12 +11,24 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Instalar Node
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm install
-      - run: npm test
+          cache: 'npm'
 
-      
+      - name: Instalar dependencias
+        run: npm ci    # más rápido y seguro que npm install
+
+      - name: Ejecutar pruebas (SI FALLA → BLOQUEA TODO)
+        run: npm test
+
+      # ESTE PASO ES EL QUE BLOQUEA EL MERGE SI LOS TESTS FALLAN
+      - name: Verificar que los tests pasaron
+        if: ${{ failure() }}
+        run: |
+          echo " TESTS FALLARON → NO SE PERMITE EL MERGE "
+          exit 1

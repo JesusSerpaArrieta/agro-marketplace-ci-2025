@@ -30,33 +30,6 @@
     }
   ],
   "campesinos": [
-    {
-      "id": 1763909673061,
-      "email": "jesuserparrieta@gmil.com",
-      "password": "123",
-      "rol": "campesino",
-      "nombre": "Jesus serpa arrieta",
-      "telefono": "3042054322",
-      "ubicacion": "BUENAVISTA",
-      "creadoEl": "2025-11-23T14:54:33.061Z"
-    },
-    {
-      "id": 1763909950071,
-      "email": "carlos@example.com",
-      "rol": "campesino",
-      "nombre": "Carlos Pérez",
-      "telefono": "3214569874",
-      "creadoEl": "2025-11-23T14:59:10.071Z"
-    },
-    {
-      "id": 1763920518736,
-      "email": "jesuserparrietaa@gmil.com",
-      "password": "1234",
-      "rol": "campesino",
-      "nombre": "Jesus serpa arrieta",
-      "telefono": "3042054322",
-      "ubicacion": "BUENAVISTA",
-      "creadoEl": "2025-11-23T17:55:18.736Z"
-    }
+   
   ]
 }

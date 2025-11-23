@@ -16,10 +16,17 @@
     </form>
     <p id="mensaje" style="margin-top:15px; font-weight:bold;"></p>
     <br>
-    <a href="index.html">← Volver al inicio</a>
+    <a href="index.html">Volver al inicio</a>
+    <br><br>
+    <a href="register.html">Registrarme como campesino</a>
   </div>
 
   <script>
+    // Si ya está logueado → redirigir directamente al dashboard
+    if (localStorage.getItem('token') && localStorage.getItem('usuario')) {
+      location.href = 'dashboard.html';
+    }
+
     document.getElementById('formLogin').onsubmit = async (e) => {
       e.preventDefault();
       const res = await fetch('/api/login', {
@@ -32,13 +39,22 @@
       });
       const data = await res.json();
       const msg = document.getElementById('mensaje');
+
       if (res.ok) {
-        msg.style.color = 'green';
-        msg.innerText = `¡Bienvenido, ${data.usuario.nombre}! Rol: ${data.usuario.rol}`;
+        // Guardar sesión
         localStorage.setItem('token', data.token);
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+
+        msg.style.color = 'green';
+        msg.innerText = `¡Bienvenido, ${data.usuario.nombre}! Redirigiendo...`;
+
+        // REDIRECCIÓN AUTOMÁTICA AL DASHBOARD
+        setTimeout(() => {
+          location.href = 'dashboard.html';
+        }, 1500);
       } else {
         msg.style.color = 'red';
-        msg.innerText = data.error;
+        msg.innerText = data.error || 'Error al iniciar sesión';
       }
     };
   </script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Publicar Producto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Publicar Producto</h1>
+    <form id="formProducto">
+      <input type="text" placeholder="Nombre" id="nombre" required>
+      <input type="number" placeholder="Precio por kg" id="precio" required>
+      <input type="number" placeholder="Cantidad (kg)" id="cantidad" required>
+      <input type="file" id="imagen" accept="image/*">
+      <div id="vista-previa" style="margin:15px 0;"></div>
+      <button type="submit">Publicar</button>
+    </form>
+    <p id="mensaje"></p>
+    <br><a href="dashboard.html">← Mi dashboard</a>
+  </div>
+
+  <script>
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    if (!usuario || usuario.rol !== 'campesino') {
+      alert('Solo campesinos pueden publicar');
+      location.href = 'dashboard.html';
+    }
+
+    // Vista previa de imagen
+    document.getElementById('imagen').onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          document.getElementById('vista-previa').innerHTML = 
+            `<img src="${ev.target.result}" style="max-width:100%; border-radius:10px;">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+    document.getElementById('formProducto').onsubmit = async (e) => {
+      e.preventDefault();
+      const file = document.getElementById('imagen').files[0];
+      let imagenUrl = '/uploads/default.jpg'; // imagen por defecto
+
+      if (file) {
+        const formData = new FormData();
+        formData.append('imagen', file);
+        const uploadRes = await fetch('/api/upload', { method: 'POST', body: formData });
+        const uploadData = await uploadRes.json();
+        imagenUrl = uploadData.url;
+      }
+
+      const datos = {
+        nombre: e.target.nombre.value,
+        precio: parseFloat(e.target.precio.value),
+        cantidad: parseFloat(e.target.cantidad.value),
+        imagen: imagenUrl,
+        campesinoId: usuario.id,
+        campesino: usuario.nombre
+      };
+
+      await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      });
+
+      document.getElementById('mensaje').innerHTML = '<span style="color:green">¡Producto publicado!</span>';
+      e.target.reset();
+      document.getElementById('vista-previa').innerHTML = '';
+    };
+  </script>
+</body>
+</html>
