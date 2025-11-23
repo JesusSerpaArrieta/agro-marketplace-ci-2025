@@ -2,21 +2,79 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agro Marketplace</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="card">
-    <h1>Agro Marketplace</h1>
-    <p>Plataforma para conectar campesinos y compradores</p>
-    <br>
-    <a href="register.html"><button>Registrarme como Campesino</button></a>
-    <br><br>
-    <a href="login.html"><button>Iniciar Sesión</button></a>
-    <br><br>
-    <a href="dashboard.html"><button>Publicar Producto</button></a>
-    <br><br>
-    <small>Integración Continua + Control de Versiones - 2025</small>
+    <div id="no-logueado" style="display:none;">
+      <h1>Agro Marketplace</h1>
+      <p>Conectando campesinos y compradores</p>
+      <br>
+      <a href="register-comprador.html"><button style="background:#1976d2">Registrarme como Comprador</button></a>
+      <br><br>
+      <a href="register.html"><button style="background:#1976d2">Registrarme como Campesino</button></a>
+      <br><br>
+      <a href="login.html"><button>Iniciar sesión</button></a>
+    </div>
+
+    <div id="logueado" style="display:none;">
+      <h1 id="saludo"></h1>
+      <p id="rol"></p>
+      <div id="acciones"></div>
+      <br>
+      <h2>Catálogo de productos disponibles</h2>
+      <div id="catalogo"><p>Cargando productos...</p></div>
+      <br><br>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
   </div>
+
+  <script>
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const token = localStorage.getItem('token');
+
+    function cerrarSesion() {
+      localStorage.clear();
+      location.reload();
+    }
+
+    if (!usuario || !token) {
+      document.getElementById('no-logueado').style.display = 'block';
+    } else {
+      document.getElementById('logueado').style.display = 'block';
+      document.getElementById('saludo').innerText = `¡Hola, ${usuario.nombre}!`;
+      document.getElementById('rol').innerText = `Rol: ${usuario.rol === 'campesino' ? 'CAMPESINO' : 'COMPRADOR'}`;
+
+      if (usuario.rol === 'campesino') {
+        document.getElementById('acciones').innerHTML = `
+          <a href="publicar.html"><button style="background:#1b5e20; padding:15px; font-size:18px">
+            Publicar nuevo producto
+          </button></a>
+        `;
+      }
+
+      // CARGAR PRODUCTOS (con manejo de errores)
+      fetch('/api/products')
+        .then(r => r.json())
+        .then(productos => {
+          if (!productos || productos.length === 0) {
+            document.getElementById('catalogo').innerHTML = '<p style="color:#666">Aún no hay productos publicados</p>';
+          } else {
+            document.getElementById('catalogo').innerHTML = productos.map(p => `
+              <div style="background:#f8fff8; border:2px solid #4caf50; border-radius:12px; padding:15px; margin:15px 0;">
+                <h3>${p.nombre}</h3>
+                <p><strong>Precio:</strong> $${p.precio}/kg | <strong>Disponible:</strong> ${p.cantidad} kg</p>
+                <p><small>Publicado por: ${p.campesino}</small></p>
+              </div>
+            `).join('');
+          }
+        })
+        .catch(() => {
+          document.getElementById('catalogo').innerHTML = '<p style="color:red">Error al cargar productos</p>';
+        });
+    }
+  </script>
 </body>
 </html>

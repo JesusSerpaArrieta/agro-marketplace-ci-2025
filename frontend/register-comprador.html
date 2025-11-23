@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro Comprador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Registro como Comprador</h1>
+    <form id="form">
+      <input type="text" placeholder="Nombre completo" id="nombre" required>
+      <input type="email" placeholder="Email" id="email" required>
+      <input type="password" placeholder="Contraseña" id="password" required>
+      <button type="submit">Crear cuenta de comprador</button>
+    </form>
+    <p id="mensaje"></p>
+    <br>
+    <a href="index.html">← Volver</a>
+  </div>
+
+  <script>
+    document.getElementById('form').onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/api/register-comprador', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: e.target.nombre.value,
+          email: e.target.email.value,
+          password: e.target.password.value
+        })
+      });
+      const data = await res.json();
+      const msg = document.getElementById('mensaje');
+      if (res.ok) {
+        msg.style.color = 'green';
+        msg.innerText = '¡Cuenta creada! Redirigiendo al login...';
+        setTimeout(() => location.href = 'login.html', 2000);
+      } else {
+        msg.style.color = 'red';
+        msg.innerText = data.error;
+      }
+    };
+  </script>
+</body>
+</html>
