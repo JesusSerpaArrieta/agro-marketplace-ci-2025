@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Agro Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Iniciar Sesión</h1>
+    <form id="formLogin">
+      <input type="email" placeholder="Email" id="email" required>
+      <input type="password" placeholder="Contraseña" id="password" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="mensaje" style="margin-top:15px; font-weight:bold;"></p>
+    <br>
+    <a href="index.html">← Volver al inicio</a>
+  </div>
+
+  <script>
+    document.getElementById('formLogin').onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: e.target.email.value,
+          password: e.target.password.value
+        })
+      });
+      const data = await res.json();
+      const msg = document.getElementById('mensaje');
+      if (res.ok) {
+        msg.style.color = 'green';
+        msg.innerText = `¡Bienvenido, ${data.usuario.nombre}! Rol: ${data.usuario.rol}`;
+        localStorage.setItem('token', data.token);
+      } else {
+        msg.style.color = 'red';
+        msg.innerText = data.error;
+      }
+    };
+  </script>
+</body>
+</html>

@@ -54,3 +54,30 @@ app.put('/api/campesino/:id', (req, res) => {
   db.get('campesinos').find({ id: parseInt(id) }).assign(req.body).write();
   res.json({ message: 'Perfil actualizado' });
 });
+
+
+// === MC-002: Login de comprador y campesino ===
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // Busca en todos los usuarios (campesinos y compradores)
+  const usuario = db.get('users').find({ email, password }).value();
+
+  if (!usuario) {
+    return res.status(401).json({ error: 'Credenciales incorrectas' });
+  }
+
+  // Simulamos un token simple (en producción sería JWT)
+  const token = Buffer.from(`${email}:${Date.now()}`).toString('base64');
+
+  res.json({
+    message: 'Login exitoso',
+    token,
+    usuario: {
+      id: usuario.id,
+      email: usuario.email,
+      nombre: usuario.nombre || 'Comprador',
+      rol: usuario.rol || 'comprador'
+    }
+  });
+});
