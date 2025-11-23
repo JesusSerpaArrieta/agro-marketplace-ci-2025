@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Campesino - Agro Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>Registro de Campesino</h1>
+    <form id="formRegistro">
+      <input type="email" placeholder="Email" id="email" required>
+      <input type="password" placeholder="Contraseña" id="password" required>
+      <input type="text" placeholder="Nombre completo" id="nombre" required>
+      <input type="tel" placeholder="Teléfono" id="telefono">
+      <input type="text" placeholder="Municipio / Vereda" id="ubicacion" required>
+      <button type="submit">Crear mi perfil de campesino</button>
+    </form>
+    <p id="mensaje" style="margin-top:15px; color:green; font-weight:bold;"></p>
+    <br>
+    <a href="index.html">← Volver al inicio</a>
+  </div>
+
+  <script>
+    document.getElementById('formRegistro').onsubmit = async (e) => {
+      e.preventDefault();
+      const datos = {
+        email: e.target.email.value,
+        password: e.target.password.value,
+        nombre: e.target.nombre.value,
+        telefono: e.target.telefono.value,
+        ubicacion: e.target.ubicacion.value
+      };
+      const res = await fetch('/api/register-campesino', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      });
+      const json = await res.json();
+      document.getElementById('mensaje').innerHTML = 
+        res.ok ? '¡Campesino registrado con éxito!' : '<span style="color:red">' + (json.error || 'Error') + '</span>';
+    };
+  </script>
+</body>
+</html>
