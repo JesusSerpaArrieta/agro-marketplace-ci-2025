@@ -32,4 +32,26 @@ describe('Pruebas básicas de la API', () => {
     .send({ telefono: '3009998888' });
   expect(edit.status).toBe(200);
   });
+
+  test('MC-002: login exitoso de campesino y comprador registrado', async () => {
+  // Primero registramos uno (del test anterior)
+  await request(app).post('/api/register-campesino').send({
+    email: 'maria@campesina.com',
+    password: '123456',
+    nombre: 'María González',
+    telefono: '3001234567',
+    ubicacion: 'Boyacá'
+  });
+
+  // Ahora intentamos login
+  const res = await request(app)
+    .post('/api/login')
+    .send({ email: 'maria@campesina.com', password: '123456' });
+
+  expect(res.status).toBe(200);
+  expect(res.body.token).toBeDefined();
+  expect(res.body.usuario.rol).toBe('campesino');
+  });
+
+
 });
