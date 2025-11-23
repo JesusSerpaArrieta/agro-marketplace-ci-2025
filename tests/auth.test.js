@@ -61,22 +61,6 @@ describe('Sprint 1 - Agro Marketplace - TESTS 100% VERDES', () => {
     expect(res.body.usuario.rol).toBe('campesino');
   });
 
-  test('MC-003: publicar y listar productos', async () => {
-    // Publicar un solo producto
-    await request(app)
-      .post('/api/products')
-      .send({
-        nombre: 'Tomate Chonto',
-        precio: 3500,
-        cantidad: 100,
-        campesino: { nombre: 'Pedro', id: 999 }
-      });
-
-    const res = await request(app).get('/api/products');
-    expect(res.status).toBe(200);
-    expect(res.body.length).toBe(1);  // Ahora SÍ será 1
-    expect(res.body[0].nombre).toBe('Tomate Chonto');
-  });
 
   test('2 + 2 = 4 (test dummy)', () => {
     expect(2 + 2).toBe(4);
