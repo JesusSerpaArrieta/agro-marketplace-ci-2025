@@ -17,6 +17,16 @@
       "nombre": "Carlos Pérez",
       "telefono": "3214569874",
       "creadoEl": "2025-11-23T14:59:10.071Z"
+    },
+    {
+      "id": 1763920518736,
+      "email": "jesuserparrietaa@gmil.com",
+      "password": "1234",
+      "rol": "campesino",
+      "nombre": "Jesus serpa arrieta",
+      "telefono": "3042054322",
+      "ubicacion": "BUENAVISTA",
+      "creadoEl": "2025-11-23T17:55:18.736Z"
     }
   ],
   "campesinos": [
@@ -37,6 +47,16 @@
       "nombre": "Carlos Pérez",
       "telefono": "3214569874",
       "creadoEl": "2025-11-23T14:59:10.071Z"
+    },
+    {
+      "id": 1763920518736,
+      "email": "jesuserparrietaa@gmil.com",
+      "password": "1234",
+      "rol": "campesino",
+      "nombre": "Jesus serpa arrieta",
+      "telefono": "3042054322",
+      "ubicacion": "BUENAVISTA",
+      "creadoEl": "2025-11-23T17:55:18.736Z"
     }
   ]
 }
