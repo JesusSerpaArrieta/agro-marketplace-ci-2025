@@ -8,7 +8,45 @@
       "nombre": "Jesus serpa arrieta",
       "telefono": "3042054322",
       "ubicacion": "BUENAVISTA",
-      "creadoEl": "2025-11-25T22:02:59.028Z"
+
+
+      "creadoEl": "2025-11-23T19:28:31.219Z"
+    },
+    {
+      "id": 1763942642042,
+      "email": "carlos@example.com",
+      "rol": "campesino",
+      "nombre": "Carlos Pérez",
+      "telefono": "3214569874",
+      "creadoEl": "2025-11-24T00:04:02.042Z"
+    },
+    {
+      "id": 1763942656743,
+      "email": "pedro@campesino.com",
+      "password": "123456",
+      "rol": "campesino",
+      "nombre": "Pedro Ramírez",
+      "telefono": "3115559999",
+      "ubicacion": "Antioquia",
+      "creadoEl": "2025-11-24T00:04:16.743Z"
+    },
+    {
+      "id": 1763942710240,
+      "email": "laura@comprador.com",
+      "password": "123456",
+      "rol": "comprador",
+      "nombre": "Laura Mejía",
+      "creadoEl": "2025-11-24T00:05:10.241Z"
+    },
+    {
+      "id": 1764105322778,
+
+      "email": "lau@gmail.com",
+      "password": "123",
+      "rol": "comprador",
+      "nombre": "Laura"
+
+
     }
   ],
   "products": [
@@ -21,6 +59,7 @@
       "imagen": "https://tse4.mm.bing.net/th/id/OIP.kLFVeE8veIjb3vW3JzBwkgHaGl?pid=ImgDet&w=195&h=173&c=7&dpr=1,4&o=7&rm=3",
       "campesinoId": 1764108179027,
       "campesino": "Jesus serpa arrieta"
+
     }
   ]
 }
