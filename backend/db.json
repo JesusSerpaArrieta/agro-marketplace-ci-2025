@@ -8,6 +8,7 @@
       "nombre": "Jesus serpa arrieta",
       "telefono": "3042054322",
       "ubicacion": "BUENAVISTA",
+
       "creadoEl": "2025-11-23T19:28:31.219Z"
     },
     {
@@ -38,11 +39,12 @@
     },
     {
       "id": 1764105322778,
+
       "email": "lau@gmail.com",
       "password": "123",
       "rol": "comprador",
       "nombre": "Laura",
-      "creadoEl": "2025-11-25T21:15:22.778Z"
+
     }
   ],
   "campesinos": [],
@@ -68,6 +70,7 @@
       "campesino": "Jesus serpa arrieta"
     },
     {
+
       "id": 1763942976686,
       "publicadoEl": "2025-11-24T00:09:36.687Z"
     },
@@ -80,6 +83,7 @@
     {
       "id": 1763943035068,
       "publicadoEl": "2025-11-24T00:10:35.069Z"
+
     }
   ]
 }
