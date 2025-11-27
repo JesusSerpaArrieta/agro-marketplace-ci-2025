@@ -63,6 +63,6 @@ describe('Sprint 1 - Agro Marketplace - TESTS 100% VERDES', () => {
 
 
   test('2 + 2 = 4 (test dummy)', () => {
-    expect(2 + 2).toBe(4);
+    expect(2 + 3).toBe(4);
   });
 });
