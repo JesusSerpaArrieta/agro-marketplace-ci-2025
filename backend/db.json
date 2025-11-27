@@ -15,10 +15,30 @@
     {
       "id": 1764108274067,
       "publicadoEl": "2025-11-25T22:04:34.067Z",
-      "nombre": "platano",
+      "nombre": "Guineo",
       "precio": 300,
       "cantidad": 500,
       "imagen": "https://tse4.mm.bing.net/th/id/OIP.kLFVeE8veIjb3vW3JzBwkgHaGl?pid=ImgDet&w=195&h=173&c=7&dpr=1,4&o=7&rm=3",
+      "campesinoId": 1764108179027,
+      "campesino": "Jesus serpa arrieta"
+    },
+    {
+      "id": 1764108274067,
+      "publicadoEl": "2025-11-25T22:04:34.067Z",
+      "nombre": "Yuca",
+      "precio": 300,
+      "cantidad": 500,
+      "imagen": "https://mejorconsalud.as.com/wp-content/uploads/2013/09/yuca-1.jpg",
+      "campesinoId": 1764108179027,
+      "campesino": "Jesus serpa arrieta"
+    },
+    {
+      "id": 1764108274067,
+      "publicadoEl": "2025-11-25T22:04:34.067Z",
+      "nombre": "platano verde",
+      "precio": 300,
+      "cantidad": 500,
+      "imagen": "https://tse1.mm.bing.net/th/id/OIP.cXd029_dNvG7yZeu6GTq7QHaE8?rs=1&pid=ImgDetMain&o=7&rm=3",
       "campesinoId": 1764108179027,
       "campesino": "Jesus serpa arrieta"
     }
