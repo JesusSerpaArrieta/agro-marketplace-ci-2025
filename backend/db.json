@@ -9,6 +9,24 @@
       "telefono": "3042054322",
       "ubicacion": "BUENAVISTA",
       "creadoEl": "2025-11-25T22:02:59.028Z"
+    },
+    {
+      "id": 1764260864654,
+      "email": "luis.diazan@cecar.edu.co",
+      "password": "1234",
+      "rol": "comprador",
+      "nombre": "Luis Diaz",
+      "creadoEl": "2025-11-27T16:27:44.654Z"
+    },
+    {
+      "id": 1764260921397,
+      "email": "luis.diaz@cecar.edu.co",
+      "password": "1234",
+      "rol": "campesino",
+      "nombre": "Luis Diaz",
+      "telefono": "3127048856",
+      "ubicacion": "sucre-sucre",
+      "creadoEl": "2025-11-27T16:28:41.397Z"
     }
   ],
   "products": [
