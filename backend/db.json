@@ -1,13 +1,14 @@
 {
   "users": [
     {
-      "id": 1763926111219,
-      "email": "jesuserparrieta@gmil.com",
+      "id": 1764108179027,
+      "email": "jesuserparrietaaaa@gmil.com",
       "password": "123",
       "rol": "campesino",
       "nombre": "Jesus serpa arrieta",
       "telefono": "3042054322",
       "ubicacion": "BUENAVISTA",
+
 
       "creadoEl": "2025-11-23T19:28:31.219Z"
     },
@@ -45,44 +46,19 @@
       "rol": "comprador",
       "nombre": "Laura"
 
+
     }
   ],
-  "campesinos": [],
   "products": [
     {
-      "id": 1763939552650,
-      "publicadoEl": "2025-11-23T23:12:32.650Z",
-      "nombre": "yuca",
-      "precio": 300,
-      "cantidad": 50,
-      "imagen": "https://www.bing.com/th/id/OIP.kHuOUbqLk5clvdL1uLWxYQHaEu?w=284&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2",
-      "campesinoId": 1763926111219,
-      "campesino": "Jesus serpa arrieta"
-    },
-    {
-      "id": 1763939706121,
-      "publicadoEl": "2025-11-23T23:15:06.122Z",
+      "id": 1764108274067,
+      "publicadoEl": "2025-11-25T22:04:34.067Z",
       "nombre": "platano",
       "precio": 300,
       "cantidad": 500,
-      "imagen": "https://www.bing.com/th/id/OIP.h3QvMyS8fjyXdZXUSwZmqQHaFY?w=297&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2",
-      "campesinoId": 1763926111219,
+      "imagen": "https://tse4.mm.bing.net/th/id/OIP.kLFVeE8veIjb3vW3JzBwkgHaGl?pid=ImgDet&w=195&h=173&c=7&dpr=1,4&o=7&rm=3",
+      "campesinoId": 1764108179027,
       "campesino": "Jesus serpa arrieta"
-    },
-    {
-
-      "id": 1763942976686,
-      "publicadoEl": "2025-11-24T00:09:36.687Z"
-    },
-    {
-      "id": 1763943031892,
-      "publicadoEl": "2025-11-24T00:10:31.892Z",
-      "email": "laura@comprador.com",
-      "password": "123456"
-    },
-    {
-      "id": 1763943035068,
-      "publicadoEl": "2025-11-24T00:10:35.069Z"
 
     }
   ]
